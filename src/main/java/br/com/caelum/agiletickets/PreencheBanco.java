@@ -1,5 +1,7 @@
 package br.com.caelum.agiletickets;
 
+import java.math.BigDecimal;
+
 import javax.persistence.EntityManager;
 
 import org.joda.time.DateTime;
@@ -47,9 +49,10 @@ public class PreencheBanco {
 		Sessao sessao = new Sessao();
 		sessao.setEspetaculo(espetaculo);
 		sessao.setInicio(new DateTime().plusDays(7+i));
-		sessao.setDuracaoEmMinutos(DURACAO_EM_MINUTOS);
-		sessao.setTotalIngressos(TOTAL_INGRESSOS);
+		sessao.setDuracaoEmMinutos(60 * 3);
+		sessao.setTotalIngressos(10);
 		sessao.setIngressosReservados(10 - i);
+		sessao.setPreco(new BigDecimal("12.34"));
 		return sessao;
 	}
 
