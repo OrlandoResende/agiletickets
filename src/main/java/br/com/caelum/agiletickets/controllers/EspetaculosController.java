@@ -96,7 +96,9 @@ public class EspetaculosController {
 		validaQuantidadeMenorQueUmESeNaoPodeReservar(quantidade, sessao);
 
 		sessao.reserva(quantidade);
-		result.include("message", "Sessao reservada com sucesso");
+		BigDecimal precoTotal = sessao.getPreco().multiply(BigDecimal.valueOf(quantidade));
+
+		result.include("message", "Sessao reservada com sucesso por " + CURRENCY.format(precoTotal));
 
 		result.redirectTo(IndexController.class).index();
 	}
